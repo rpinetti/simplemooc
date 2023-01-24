@@ -1,6 +1,11 @@
-from django.http import HttpResponse
+from django.shortcuts import render
 
 
 # Create your views here.
 def home(request):
-    return HttpResponse('Hello Word')
+    # renderiza o arquivo home.html localizado na pasta template
+    return render(request, 'home.html', {'usuario': 'Roberto'})
+
+
+def contact(request):
+    return render(request, 'contact.html')
