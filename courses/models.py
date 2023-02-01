@@ -14,7 +14,8 @@ class CourseManager(models.Manager):
 class Course(models.Model):
     name = models.CharField('Nome', max_length=100)
     slug = models.SlugField('Atalho')
-    description = models.TextField('Descricao', blank=True)
+    description = models.TextField('Descrição Simples', blank=True)
+    about = models.TextField('Sobre o curso', blank=True)
     start_date = models.DateField('Data de Início', null=True, blank=True)
     image = models.ImageField(upload_to='courses/images', verbose_name='Imagem', null=True, blank=True)
     create_at = models.DateTimeField('Criado em', auto_now_add=True)
@@ -25,6 +26,11 @@ class Course(models.Model):
 
     def __str__(self):
         return self.name
+
+    ## Cria a url para acessar os detalhes do curso
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('courses:details', kwargs={'slug': self.slug})
 
     class Meta:
         verbose_name = 'Curso'
