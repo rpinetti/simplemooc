@@ -2,56 +2,57 @@
 
 {% load static %}
 
-{% block content %}
-<div class="splash">
-    <div class="pure-g-r">
-        <div class="pure-u-1">
-            <div class="l-box splash-text">
-                <h1 class="splash-head">
-                    {{ course }}
-                </h1>
-                <h2 class="splash-subhead">
-                    {{ course.description }}
-                </h2>
-                <p>
-                    <a href="#" class="pure-button primary-button">Inscreva-se</a>
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="pure-g-r content-ribbon">
-    <div class="pure-u-2-3">
-        <div class="l-box">
-            <h4 class="content-subhead">Sobre o Curso</h4>
-            {{ course.about|linebreaks }}
-        </div>
-    </div>
-    <div class="pure-u-1-3">
-        <div class="l-box">
-            {% if course.image %}
-            <img src="{{ course.image.url }}" alt=""/>
-            {% else %}
-            <img src="{% static 'img/course-image.png' %}" alt=""/>
-            {% endif %}
-            <h4>Dúvidas?</h4>
+{% block splash %}
+<section class="splash">
+    <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8">
+            <h1 class="splash-head">{{ course }}</h1>
+            <h2 class="splash-subhead">
+                {{ course.description }}
+            </h2>
             <p>
-                <a href="#contato" title="" class="pure-button">Fale Conosco</a>
+                <a href="#" class="pure-button primary-button">Inscreva-se</a>
             </p>
         </div>
     </div>
-</div>
+</section>
+{% endblock %}
+
+{% block content %}
+<article class="blog-post">
+    <h2 class="blog-post-title mb-1">Sobre o Curso</h2>
+    <hr/>
+    <p>{{ course.about|linebreaks }}</p>
+    <div>
+        {% if course.image %}
+        <img src="{{ course.image.url }}" alt=""/>
+        {% else %}
+        <img src="{% static 'img/course-image.png' %}" alt=""/>
+        {% endif %}
+        <h4>Dúvidas?</h4>
+        <p>
+            <a href="#contato" title="" class="pure-button">Fale Conosco</a>
+        </p>
+    </div>
+</article>
+
 <div class="pure-g-r content-ribbon" id="contato">
     <div class="pure-u-1">
         <h3>Tire sua dúvida sobre o Curso</h3>
         {% if is_valid %}
-        <p>Você enviou o formulário com sucesso</p>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            Você enviou o formulário com sucesso
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
         {% endif %}
-        <form action="#contato" class="pure-form pure-form-aligned" method="post">
+
+        <form action="#contato" method="post">
             {% csrf_token %}
             <fieldset>
                 {% for field in form %}
-                <div class="pure-control-group">
+                <div class="form-group">
                     {{ field.label_tag }}
                     {{ field }}
                     {% if field.errors %}
@@ -63,9 +64,7 @@
                     {% endif %}
                 </div>
                 {% endfor %}
-                <div class="pure-controls">
-                    <button type="submit" class="pure-button pure-button-primary">Enviar</button>
-                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
             </fieldset>
         </form>
     </div>

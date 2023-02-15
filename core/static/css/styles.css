@@ -1,36 +1,27 @@
-* {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+.navbar {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 }
-body {
-    margin: 0 auto;
-    line-height: 1.7em;
+
+.content-ribbon {
+    margin-top: 3em;
+    border-bottom: 1px solid #eee;
 }
-.l-box {
-    padding: 1em;
+
+.content-subhead {
+    color: #999;
+    padding-bottom: 0.3em;
+    text-transform: uppercase;
+    margin: 0;
+    border-bottom: 2px solid #eee;
+    display: inline-block;
 }
-.header {
-    margin: 0 0;
-}
-.header .pure-menu {
-    padding: 0.5em;
-}
-.header .pure-menu li a:hover,
-.header .pure-menu li a:focus {
-    background: none;
-    border: none;
-    color: #aaa;
-}
-body .primary-button {
-    background: #02a6eb;
-    color: #fff;
-}
+
 .splash {
-    margin: 2em auto 0;
-    padding: 3em 0.5em;
-    background: #eee;
+    margin: 0em auto 0;
+    padding: 0 1em;
 }
+
 .splash .splash-head {
     font-size: 300%;
     margin: 0em 0;
@@ -41,34 +32,10 @@ body .primary-button {
     font-weight: 300;
     line-height: 1.4em;
 }
-.splash .primary-button {
-    font-size: 150%;
-}
-.content .content-subhead {
-    color: #999;
-    padding-bottom: 0.3em;
-    text-transform: uppercase;
-    margin: 0;
-    border-bottom: 2px solid #eee;
-    display: inline-block;
-}
-.content .content-ribbon {
-    margin: 3em;
-    border-bottom: 1px solid #eee;
-}
-.ribbon {
-    background: #eee;
-    text-align: center;
-    padding: 2em;
-    color: #999;
-}
-.ribbon h2 {
-    display: inline;
-    font-weight: normal;
-}
+
 .footer {
-    background: #111;
-    color: #666;
+    background: #2d3e50;
+    color: #fff;
     text-align: center;
     padding: 1em;
     font-size: 80%;

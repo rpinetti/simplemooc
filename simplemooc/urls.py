@@ -22,6 +22,7 @@ admin.autodiscover()
 
 urlpatterns = [
                   path('', include('core.urls', namespace='core')),
+                  path('contas/', include('accounts.urls', namespace='accounts')),
                   path('cursos/', include('courses.urls', namespace='courses')),
                   path('admin/', admin.site.urls),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # url das imagens
